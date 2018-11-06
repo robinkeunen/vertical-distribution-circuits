@@ -4,7 +4,7 @@
 		<record id="view_partner_form" model="ir.ui.view">
             <field name="name">res.partner.form</field>
             <field name="model">res.partner</field>
-			<field name="inherit_id" ref="base.view_partner_form"/>            
+			<field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
             	<field name="type" position="before">
             		<field name="raliment_point_id" attrs="{'invisible':['|',('is_raliment_point','=',True),('is_delivery_point','=',True)]}"/>
@@ -18,24 +18,42 @@
             	</xpath>
             </field>
         </record>
-		
+
 		<record id="view_res_partner_easymyhub_filter" model="ir.ui.view">
             <field name="name">res.partner.select</field>
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_res_partner_filter"/>
             <field name="arch" type="xml">
                 <filter name="customer" position="after">
-                	<filter string="Raliment customers" name="raliment_customer" domain="[('customer','=',1),('raliment_point_id','!=',False)]"/>
-                	<filter string="Individual customers" name="individual_customer"  domain="[('raliment_point_id','=',False),('is_raliment_point','=',False),('is_gac','=',False),('customer','=',True)]"/>
+                	<filter string="Raliment customers"
+                            name="raliment_customer"
+                            domain="[('customer','=',1),
+                                     ('raliment_point_id','!=',False)]"/>
+                	<filter string="Individual customers"
+                            name="individual_customer"
+                            domain="[('raliment_point_id','=',False),
+                                     ('is_raliment_point','=',False),
+                                     ('is_gac','=',False),
+                                     ('customer','=',True)]"/>
                 </filter>
                 <filter name="supplier" position="after">
-                	<filter string="Gac" name="gac" domain="[('is_gac','=',1), ('customer','=',1), ('raliment_point_id','=',False)]"/>
-                	<filter string="Raliment points" name="raliment_point" domain="[('is_raliment_point','=',1),('parent_id','=',False)]"/>
-                	<filter string="Delivery points" name="delivery_point" domain="[('is_delivery_point','=',1),('parent_id','=',False)]"/>
+                	<filter string="Gac"
+                            name="gac"
+                            domain="[('is_gac','=',1),
+                                     ('customer','=',1),
+                                     ('raliment_point_id','=',False)]"/>
+                	<filter string="Raliment points"
+                            name="raliment_point"
+                            domain="[('is_raliment_point','=',1),
+                                     ('parent_id','=',False)]"/>
+                	<filter string="Delivery points"
+                            name="delivery_point"
+                            domain="[('is_delivery_point','=',1),
+                                     ('parent_id','=',False)]"/>
                 </filter>
             </field>
         </record>
-		
+
 		<record id="action_partner_raliment" model="ir.actions.act_window">
             <field name="name">raliment points</field>
             <field name="type">ir.actions.act_window</field>
@@ -56,7 +74,7 @@
         </record>
 
         <menuitem action="action_partner_raliment" id="menu_partner_raliment" name="Raliment point" parent="menu_easy_my_hub_main_contact" sequence="5" groups="distribution_circuits_base.group_easy_my_hub_user"/>
-        
+
         <record id="action_raliment_customer" model="ir.actions.act_window">
             <field name="name">raliment customers</field>
             <field name="type">ir.actions.act_window</field>
@@ -98,8 +116,8 @@
             </field>
         </record>
 
-        <menuitem action="action_individual_customer" id="menu_individual_customer" name="Individual customers" parent="menu_easy_my_hub_main_contact" sequence="10" groups="distribution_circuits_base.group_easy_my_hub_user"/>        
-       
+        <menuitem action="action_individual_customer" id="menu_individual_customer" name="Individual customers" parent="menu_easy_my_hub_main_contact" sequence="10" groups="distribution_circuits_base.group_easy_my_hub_user"/>
+
         <record id="action_partner_gac" model="ir.actions.act_window">
             <field name="name">GACs</field>
             <field name="type">ir.actions.act_window</field>
@@ -119,6 +137,6 @@
             </field>
         </record>
 
-        <menuitem action="action_partner_gac" id="menu_partner_gac" name="GAC" parent="menu_easy_my_hub_main_contact" sequence="20" groups="distribution_circuits_base.group_easy_my_hub_user"/>          
+        <menuitem action="action_partner_gac" id="menu_partner_gac" name="GAC" parent="menu_easy_my_hub_main_contact" sequence="20" groups="distribution_circuits_base.group_easy_my_hub_user"/>
 	</data>
 </odoo>
