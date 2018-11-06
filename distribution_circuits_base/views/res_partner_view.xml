@@ -51,6 +51,13 @@
                             domain="[('is_delivery_point','=',1),
                                      ('parent_id','=',False)]"/>
                 </filter>
+
+                <group name="group_by" position="inside">
+                    <filter name="group_raliment_point"
+                            string="Raliment Point"
+                            context="{'group_by': 'raliment_point_id'}"/>
+                </group>
+
             </field>
         </record>
 
